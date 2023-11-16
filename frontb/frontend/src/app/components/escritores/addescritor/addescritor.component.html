@@ -1,0 +1,45 @@
+
+
+
+<div class="card">
+    <p-table [paginator]="true" [rows]="5" [value]="escritor" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+
+<div class="card flex justify-content-center">
+    <p-button (click)="showDialog()" icon="pi pi-external-link" label="Agregar Escritor"></p-button>
+    <p-dialog header="Agregar Escritor" [(visible)]="visible" [style]="{width: '50vw'}">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+            <label for="nombre">Dia Mes Año:</label>
+            <input placeholder="dia mes año" type="text" id="nombre" formControlName="nombre" />
+          
+            <label for="direccion">Autor:</label>
+            <input placeholder="autor" type="text" id="direccion" formControlName="direccion" />
+          
+            <label for="telefono">Libro:</label>
+            <input placeholder="libro" type="text" id="telefono" formControlName="telefono" />
+          
+            <button type="submit">Guardar Escritor</button>
+          </form>
+          
+         
+    </p-dialog>
+</div>
+            <tr>
+                <th>id</th>
+                <th>Dia Mes Año</th>
+                <th>autor</th>
+                <th>libros</th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-escritor>
+            <tr>
+                <td>{{ escritor.id }}</td>
+                <td>{{ escritor.dia_mes_ano}}</td>
+                <td>{{ escritor.autor }}</td>
+                <td>{{ escritor.libro }}</td>
+               
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

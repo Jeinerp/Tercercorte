@@ -1,0 +1,35 @@
+<div class="card">
+    <p-table [paginator]="true" [rows]="5" [value]="ejemplare" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+
+            
+           <div class="card flex justify-content-center">
+        <p-button (click)="showDialog()" icon="pi pi-external-link" label="Agregar Ejemplar"></p-button>
+        <p-dialog header="Agregar Ejemplar" [(visible)]="visible" [style]="{width: '50vw'}">
+             <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+                <label for="nombre">Libro:</label>
+                <input placeholder="libro" type="text" id="nombre" formControlName="nombre" />
+          
+                <label for="apellido">Localizacion:</label>
+                <input placeholder="localizacion" type="text" id="apellido" formControlName="apellido" />
+          
+                <button type="submit">Guardar Ejemplar</button>
+             </form>
+        </p-dialog>
+             </div>
+            <tr>
+                <th>id</th>
+                <th>libro</th>
+                <th>localizacion</th>
+               
+            </tr>
+          </ng-template>
+        <ng-template pTemplate="body" let-ejemplare>
+            <tr>
+                <td>{{ ejemplare.id }}</td>
+                <td>{{ ejemplare.libro }}</td>
+                <td>{{ ejemplare.localizacion }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

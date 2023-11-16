@@ -1,0 +1,34 @@
+<div class="card">
+    <p-table [paginator]="true" [rows]="5" [value]="prestamo" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+
+            
+<div class="card flex justify-content-center">
+    <p-button (click)="showDialog()" icon="pi pi-external-link" label="Agregar Fecha"></p-button>
+    <p-dialog header="Agregar prestamo" [(visible)]="visible" [style]="{width: '50vw'}">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+            <label for="nombre">fecha devolucion:</label>
+            <input placeholder="fecha devolucion" type="text" id="nombre" formControlName="nombre" />
+          
+            <label for="apellido">fecha prestamo:</label>
+            <input placeholder="fecha prestamo" type="text" id="apellido" formControlName="apellido" />
+          
+            <button type="submit">Guardar Fecha</button>
+          </form>
+        </p-dialog>
+    </div>
+    <tr>
+        <th>id</th>
+        <th>fecha devolucion</th>
+        <th>fecha prestamo</th>           
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-prestamo>
+    <tr>
+        <td>{{ prestamo.id }}</td>
+        <td>{{ prestamo.fecha_devolucion}}</td>
+        <td>{{ prestamo.fecha_prestamo }}</td>         
+    </tr>
+            </ng-template>
+        </p-table>
+    </div>
